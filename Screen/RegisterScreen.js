@@ -78,7 +78,6 @@ const RegisterScreen = (props) => {
       formBody.push(encodedKey + '=' + encodedValue);
     }
     formBody = formBody.join('&');
-
     fetch('http://localhost:3000/api/user/register', {
       method: 'POST',
       body: formBody,

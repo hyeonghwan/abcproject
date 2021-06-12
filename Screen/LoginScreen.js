@@ -49,7 +49,6 @@ const LoginScreen = ({navigation}) => {
       formBody.push(encodedKey + '=' + encodedValue);
     }
     formBody = formBody.join('&');
-
     fetch('http://localhost:3000/api/user/login', {
       method: 'POST',
       body: formBody,
