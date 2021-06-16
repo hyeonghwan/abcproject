@@ -1,32 +1,52 @@
 import React from 'react';
-import {Animated,Dimensions,StyleSheet,TextInput,View,AsyncS} from 'react-native';
+import {Animated,Dimensions,StyleSheet,TextInput,View,Async} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useState } from 'react/cjs/react.development';
+import { useState,useEffect } from 'react/cjs/react.development';
 import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
 import 'moment/locale/ko';
+import SearchScreen from './SearchScreen';
 
 export const deviceWidth =Dimensions.get('screen').width;
 
 const SearchTitle =(props)=>{
-    const[inputValue,setInputValue]=useState('d');
+    const[inputValue,setInputValue]=useState('');
     const testdateTime = moment().format('YYYY-MM-DD');
+    const [keywords,setKeywords]=useState('')
 
-    _searchData =()=>{
-        const newKeyword={
-            id: testdateTime,
-            text: inputValue,
-        }
-        AsyncStorage.setItem('newKeyword',JSON.stringify(newKeyword));
-        props.navigationProps.navigate('SearchScreen');
+    // _searchData =()=>{
+    //     const newKeyword={
+    //         id: testdateTime,
+    //         text: inputValue,
+    //     }
+    //     AsyncStorage.setItem('newKeyword',JSON.stringify(newKeyword));
+    //     props.navigationProps.navigate('HomeScreen');
+    // }
+
+     //keyword에 변화가 일어날때만 랜더링
+  useEffect(() => {
+    //array 타입을 string형태로 바꾸기 위해 json.stringfy를 사용한다.
+    AsyncStorage.setItem('keywords', JSON.stringify(keywords))
+  }, [keywords]);
+
+  //검색어 추가
+  const handleAddKeyword = (inputValue) => {
+    console.log('inputValue', inputValue)
+    const newKeyword = {
+      id: Date.now(),
+      text: inputValue,
     }
+    setKeywords([newKeyword,...keywords])
+ 
+    //console.log(keywords);
+  }
     
-    const MoveToSearch = ()=> {
+    // const MoveToSearch = ()=> {
         
         
-        props.navigationProps.navigate('SearchScreen',{test : newKeyword});
-        //props.navigationProps.navigate('HomeScreen')
-      }
+    //     props.navigationProps.navigate('SearchScreen',{test : newKeyword});
+    //     //props.navigationProps.navigate('HomeScreen')
+    //   }
     return(
         <View style={{flexDirection: 'row'}}>
             <TextInput
@@ -38,7 +58,7 @@ const SearchTitle =(props)=>{
             clearButtonMode={true,"while-editing"}
             />
              <Ionicons 
-                onPress={()=>_searchData()}
+                onPress={()=>handleAddKeyword(inputValue)}
                 name={"search-outline"} 
                 size={30} 
                 style={styles.location}

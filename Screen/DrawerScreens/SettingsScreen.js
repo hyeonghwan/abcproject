@@ -10,18 +10,18 @@ const SettingsScreen = () => {
   return(
     <List.Section>
     <List.Subheader>Profile info</List.Subheader>
-    <List.Item title="배달 주소 관리" left={() => <List.Icon icon="bycycle" />} />
+    <List.Item title="배달 주소 관리" left={() => <List.Icon icon="heart" />} />
     <List.Item
       title="즐겨찾기"
       left={() => <List.Icon color="#000" icon="heart-outline" />}
     />
     <List.Item
       title="할인쿠폰"
-      left={() => <List.Icon color="#000" icon="logo" />}
+      left={() => <List.Icon color="#000" icon="heart" />}
     />
     <List.Item
       title="진행중인 이벤트"
-      left={() => <List.Icon color="#000" icon="alert" />}
+      left={() => <List.Icon color="#000" icon="heart" />}
     />
     <List.Item
       title="결제관리"
@@ -29,7 +29,7 @@ const SettingsScreen = () => {
     />
     <List.Item
       title="고객지원"
-      left={() => <List.Icon color="#000" icon="call-outline" />}
+      left={() => <List.Icon color="#000" icon="card" />}
     />
   </List.Section>
 

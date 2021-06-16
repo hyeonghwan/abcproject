@@ -4,6 +4,7 @@
 // Import React
 import React from 'react';
 import {Modal, TextInput} from 'react-native';
+import { Platform } from 'react-native'
 // Import Navigators from React Navigation
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
@@ -11,16 +12,16 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 // Import Screens
 import HomeScreen from './DrawerScreens/Product/HomeScreen';
 import SettingsScreen from './DrawerScreens/SettingsScreen';
-import SearchScreen from './DrawerScreens/SearchScreen';
+import SearchScreen from './SearchComponent/SearchScreen';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
-import SearchNavigateImage from './Components/SearchNavigateImage';
-import SearchOutLineImage from './Components/SearchOutLineImage';
+import SearchNavigateImage from './SearchComponent/SearchNavigateImage';
+
 import ProductDetailScreen from './DrawerScreens/Product/ProductDetailScreen';
 import FavoritesListScreen from './DrawerScreens/FavoritesListScreen';
 import DeliveryHistoryScreen from './DrawerScreens/DeliveryHistoryScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import SearchTitle from './Components/SearchTitle'
+import SearchTitle from './SearchComponent/SearchTitle'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import DelivertHistoryScreen from './DrawerScreens/DeliveryHistoryScreen';
@@ -189,8 +190,10 @@ const TabScreen =()=>{
       <Tab.Navigator
         screenOptions={({route}) => ({
           tabBarIcon: ({ focused,color,size}) =>{
+            
             let iconName = '';
             if(route.name === "상품"){
+              if(Platform.OS === 'ios')
               iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
               }
               else if(route.name === "설정"){

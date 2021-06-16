@@ -2,7 +2,7 @@
 // https://aboutreact.com/react-native-login-and-signup/
 
 // Import React and Component
-import React, {useState, createRef} from 'react';
+import React, {createRef} from 'react';
 import {
   StyleSheet,
   TextInput,
@@ -14,7 +14,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
 } from 'react-native';
-
+import { useState } from 'react/cjs/react.development';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import Loader from './Components/Loader';
@@ -28,7 +28,40 @@ const LoginScreen = ({navigation}) => {
   const passwordInputRef = createRef();
 
   const handleSubmitPress = () => {
+
+      // const log_id={
+      //     id: userEmail,
+      //     text: userPassword,
+      // }
+  
+      setStringValue = async (value) => {
+        try {
+          await AsyncStorage.setItem('log_id', value)
+        } catch(e) {
+          // save error
+        }
+      
+        console.log('setDone')
+      }
+      setStringValue(userEmail);
+      // AsyncStorage.setItem('log_id',userEmail, () => {
+      //   console.log("저장되었습니다!");
+      // });   // 저장하는 법
+
+      // AsyncStorage.getItem('log_id', getId => {
+      //   console.log(getId+"   logtry"); 
+      // }); 
+    
+     
+    
+   
+    console.log(userEmail);
+    
+    
+    // const test1=getMyStringValue();
+    // console.log(test1+" 형환스");
     navigation.replace('DrawerNavigationRoutes');
+
     
 /*
     setErrortext('');

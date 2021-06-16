@@ -10,10 +10,30 @@ import {
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
+import { useState } from 'react/cjs/react.development';
+import AsyncStorage from '@react-native-community/async-storage'
 
-import AsyncStorage from '@react-native-community/async-storage';
-
-const CustomSidebarMenu = (props) => {
+const CustomSidebarMenu = (props) => {  
+  
+    const setData=(value)=>{
+       const test=value;
+      console.log(test+ "  sexParty")
+      
+    }
+   getMyStringValue = async () => {
+    try {
+       await AsyncStorage.getItem('log_id').then((value)=>{setData(value)});
+      
+    } catch(e) {
+      // read error
+    }
+  
+    console.log('getDone.')
+  
+  }
+  getMyStringValue();
+  
+  
   return (
     <View style={stylesSidebar.sideMenuContainer}>
       <View style={stylesSidebar.profileHeader}>
@@ -23,7 +43,7 @@ const CustomSidebarMenu = (props) => {
           </Text>
         </View>
         <Text style={stylesSidebar.profileHeaderText}>
-          ABC fOOD
+        
         </Text>
       </View>
       <View style={stylesSidebar.profileHeaderLine} />
@@ -65,7 +85,7 @@ const CustomSidebarMenu = (props) => {
   );
 };
 
-export default CustomSidebarMenu;
+
 
 const stylesSidebar = StyleSheet.create({
   sideMenuContainer: {
@@ -104,3 +124,5 @@ const stylesSidebar = StyleSheet.create({
     marginTop: 15,
   },
 });
+
+export default CustomSidebarMenu;

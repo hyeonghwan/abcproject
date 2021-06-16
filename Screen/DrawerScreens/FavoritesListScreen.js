@@ -2,11 +2,15 @@
 // https://aboutreact.com/react-native-login-and-signup/
 
 // Import React and Component
-import React from 'react';
+import React, { useState } from 'react';
 import {View, Text, SafeAreaView,StyleSheet} from 'react-native';
 
 const FavoritesListScreen = () => {
+const [show,setShow]=useState(false);
+  
+if(show){
   return (
+    
     <SafeAreaView style={{flex: 1}}>
       <View style={styles.container}>
          <Text style={styles.styleText}>
@@ -18,6 +22,24 @@ const FavoritesListScreen = () => {
       </View>
     </SafeAreaView>
   );
+  }
+  else{
+    return(
+      <View>
+         <Text style={styles.styleText}>
+            엿먹으세요ㅗ
+         </Text>
+         <Text style={styles.styleText2}>
+         좋아하는 상품에 ♥ 를 눌러주세요
+         </Text>
+      </View>
+    );
+
+    
+  }
+  
+
+  
 };
 const styles=StyleSheet.create({
    container: {

@@ -13,7 +13,8 @@ import {
   View, 
   StatusBar,
   TextInput,
-  Animated
+  Animated,
+  
 } from 'react-native';
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
@@ -21,7 +22,7 @@ import { TouchableOpacity, ScrollView } from "react-native-gesture-handler";
 
 import { useState } from 'react/cjs/react.development';
 import ProductDetailScreen from './ProductDetailScreen';
-import SearchComponent from '../../Components/SearchComponent';
+
 import FocusAwareStatusBar from '../../Components/FocusStatusBar';
 
 const DATA = [
